@@ -1,0 +1,62 @@
+# The plugin has been developed by LeticiaCHEAT
+# Any bug or error in the plugin, you can contact me on discord.
+
+# Discord: WinxxJAVA#7250
+
+2fa:
+  enabled: true # caso ativo, o jogador só vai poder logar no antigriefing se tiver com a permissão.
+  permission: 'winxx.antigriefing.2fa'
+  no-permission: '&cVocê não tem permissão para se autentificar no AntiGriefing.'
+
+antigriefing:
+  password: '!TXKN1JEO_'
+  # váriaveis: {player} exibe o nick do jogador, {newline} pula linha.
+  kick-message: '&5&lMAGIC PLUGINS{newline}{newline}&cVocê foi expulso do servidor{newline}&cpor errar a senha do AntiGriefing muitas vezes!{newline}{newline}&cObs: Isso gerou LOGS para a moderação.'
+  blocked-commands:
+    - '//' # Starts do World Edit.
+    - '/we'
+    - '/worldedit:'
+    - '/op'
+    - '/system'
+    - '/reload'
+    - '/mv'
+    - '/stop'
+  syntax-error: '&aUtilize /antigriefing <password>'
+  logged-in: '&aVocê se autentificou com sucesso no AntiGriefing.'
+  incorrect-password: '&cVocê errou a senha do AntiGriefing {times} vezes.' # {times} define a quantia de vezes, se errar 3 vezes é kickado!
+
+view-logs: # logs in-game for staffers
+  view-perm: 'winxx.antigriefing.viewlogs' # Permissão para receber a log in-game.
+  view-message:
+    - ''
+    - '&5&lMAGIC PLUGINS ➥ VIEW LOGS'
+    - ''
+    - '&eO jogador {player} tentou usar o comando {command} e foi bloqueado pelo AntiGriefing.'
+    - ''
+
+discord-integration:
+  enabled: true # RECOMENDÁVEL, ISSO IRÁ GERAR LOGS DE TUDO.
+  webhook-url: ''
+
+  embed-details:
+    view-embed:
+      title: 'MAGIC PLUGINS - ANTI GRIEFING'
+      description: 'O jogador *{player}* tentou usar o comando {command}.{newline}**{date}**' # váriaveis: {player}, {command}, {newline}, {date}.
+      footer: 'winxxdeveloper.net'
+      image: 'https://cdn.discordapp.com/attachments/1080278430794391603/1080610665003229234/b2aefe12b3894983b62d9d0bef1cd95a.jpg'
+    auth-embed:
+      sucess:
+        title: 'MAGIC PLUGINS - ANTI GRIEFING'
+        description: 'O jogador *{player}* se autentificou com sucesso no AntiGriefing.{newline}password: ||{password}||{newline}**{date}**' # váriaveis: {player}, {password} ,{newline}, {date}.
+        footer: 'winxxdeveloper.net'
+        image: 'https://cdn.discordapp.com/attachments/1080278430794391603/1080610665003229234/b2aefe12b3894983b62d9d0bef1cd95a.jpg'
+      error:
+        title: 'MAGIC PLUGINS - ANTI GRIEFING'
+        description: 'O jogador *{player}* tentou se autentificar no AntiGriefing utilizando a senha: ||{password}||{newline}**{date}**' # váriaveis: {player}, {password}, {newline}, {date}.
+        footer: 'winxxdeveloper.net'
+        image: 'https://cdn.discordapp.com/attachments/1080278430794391603/1080610665003229234/b2aefe12b3894983b62d9d0bef1cd95a.jpg'
+
+# Dicas extras de LeticiaCHEAT :D
+
+# 1- Recomendável usar um GERADOR DE SENHAS para setar o password.
+# 2- Deixar só os MASTER com a senha do antigriefing, para evitar o griefing do servidor.

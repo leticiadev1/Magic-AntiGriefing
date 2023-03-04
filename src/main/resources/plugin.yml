@@ -1,0 +1,8 @@
+name: WinxxAntiGriefing
+version: '${project.version}'
+main: net.winxxdeveloper.winxxantigriefing.Terminal
+authors: [ LeticiaCHEAT ]
+description: Plugin de antigriefing integrado ao discord - FREE
+commands:
+  antigriefing:
+    aliases: [ag]
