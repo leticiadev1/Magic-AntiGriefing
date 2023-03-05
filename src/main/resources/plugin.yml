@@ -1,4 +1,4 @@
-name: WinxxAntiGriefing
+name: MagicAntiGriefing
 version: '${project.version}'
 main: net.winxxdeveloper.winxxantigriefing.Terminal
 authors: [ LeticiaCHEAT ]

@@ -63,20 +63,22 @@ public class AntiGriefingListener extends AntiGriefingManager implements Listene
                         if(config.getBoolean("discord-integration.enabled")){
                             if(config.getString("discord-integration.webhook-url")
                                     .startsWith("https://discord.com/api/webhooks/")) {
-                                DiscordWebhook webhook = new DiscordWebhook(WebhookManager.getWebhook_url());
-                                webhook.addEmbed(new DiscordWebhook.EmbedObject()
-                                        .setTitle(WebhookManager.getEmbedTitle())
-                                        .setDescription(WebhookManager.getEmbedDescription()
-                                                .replace("{player}", player.getDisplayName())
-                                                .replace("{command}", message)
-                                                .replace("{date}", "\\nData: "+ WebhookManager.getDate()+
-                                                        "\\nHorário: "+WebhookManager.getHour()))
-                                        .setColor(Color.PINK)
-                                        .setFooter(WebhookManager.getEmbedFooter(), WebhookManager.getEmbedImage()));
-                                try{
-                                    webhook.execute();
-                                }catch (IOException e){
-                                    Bukkit.getConsoleSender().sendMessage("§cNão foi possivel enviar a embed no discord, configure a integração dentro da config.yml");
+                                if(config.getBoolean("discord-integration.enabled")){
+                                    DiscordWebhook webhook = new DiscordWebhook(WebhookManager.getWebhook_url());
+                                    webhook.addEmbed(new DiscordWebhook.EmbedObject()
+                                            .setTitle(WebhookManager.getEmbedTitle())
+                                            .setDescription(WebhookManager.getEmbedDescription()
+                                                    .replace("{player}", player.getDisplayName())
+                                                    .replace("{command}", message)
+                                                    .replace("{date}", "\\nData: "+ WebhookManager.getDate()+
+                                                            "\\nHorário: "+WebhookManager.getHour()))
+                                            .setColor(Color.PINK)
+                                            .setFooter(WebhookManager.getEmbedFooter(), WebhookManager.getEmbedImage()));
+                                    try{
+                                        webhook.execute();
+                                    }catch (IOException e){
+                                        Bukkit.getConsoleSender().sendMessage("§cNão foi possivel enviar a embed no discord, configure a integração dentro da config.yml");
+                                    }
                                 }
                             }
                         }

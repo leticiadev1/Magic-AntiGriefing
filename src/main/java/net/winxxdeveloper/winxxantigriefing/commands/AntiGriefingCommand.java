@@ -42,20 +42,22 @@ public class AntiGriefingCommand extends AntiGriefingManager implements CommandE
                                 ActionBar.sendActionbar(player, config.getString("antigriefing.logged-in")
                                         .replace("&", "§"));
 
-                                DiscordWebhook webhook = new DiscordWebhook(WebhookManager.getWebhook_url());
-                                webhook.addEmbed(new DiscordWebhook.EmbedObject()
-                                        .setTitle(AuthWebhManager.getAuthSucessTitle())
-                                        .setDescription(AuthWebhManager.getAuthSucessDescription()
-                                                .replace("{player}", player.getDisplayName())
-                                                .replace("{password}", args[0])
-                                                .replace("{date}", "\\nData: "+ WebhookManager.getDate()+
-                                                        "\\nHorário: "+WebhookManager.getHour()))
-                                        .setColor(Color.GREEN)
-                                        .setFooter(AuthWebhManager.getAuthSucessFooter(), AuthWebhManager.getAuthSucessImage()));
-                                try{
-                                    webhook.execute();
-                                }catch (IOException e){
-                                    Bukkit.getConsoleSender().sendMessage("§cNão foi possivel enviar a embed no discord, configure a integração dentro da config.yml");
+                                if(config.getBoolean("discord-integration.enabled")){
+                                    DiscordWebhook webhook = new DiscordWebhook(WebhookManager.getWebhook_url());
+                                    webhook.addEmbed(new DiscordWebhook.EmbedObject()
+                                            .setTitle(AuthWebhManager.getAuthSucessTitle())
+                                            .setDescription(AuthWebhManager.getAuthSucessDescription()
+                                                    .replace("{player}", player.getDisplayName())
+                                                    .replace("{password}", args[0])
+                                                    .replace("{date}", "\\nData: "+ WebhookManager.getDate()+
+                                                            "\\nHorário: "+WebhookManager.getHour()))
+                                            .setColor(Color.GREEN)
+                                            .setFooter(AuthWebhManager.getAuthSucessFooter(), AuthWebhManager.getAuthSucessImage()));
+                                    try{
+                                        webhook.execute();
+                                    }catch (IOException e){
+                                        Bukkit.getConsoleSender().sendMessage("§cNão foi possivel enviar a embed no discord, configure a integração dentro da config.yml");
+                                    }
                                 }
 
                                 return true;
@@ -68,20 +70,22 @@ public class AntiGriefingCommand extends AntiGriefingManager implements CommandE
                         ActionBar.sendActionbar(player, config.getString("antigriefing.logged-in")
                                 .replace("&", "§"));
 
-                        DiscordWebhook webhook = new DiscordWebhook(WebhookManager.getWebhook_url());
-                        webhook.addEmbed(new DiscordWebhook.EmbedObject()
-                                .setTitle(AuthWebhManager.getAuthSucessTitle())
-                                .setDescription(AuthWebhManager.getAuthSucessDescription()
-                                        .replace("{player}", player.getDisplayName())
-                                        .replace("{password}", args[0])
-                                        .replace("{date}", "\\nData: "+ WebhookManager.getDate()+
-                                                "\\nHorário: "+WebhookManager.getHour()))
-                                .setColor(Color.GREEN)
-                                .setFooter(AuthWebhManager.getAuthSucessFooter(), AuthWebhManager.getAuthSucessImage()));
-                        try{
-                            webhook.execute();
-                        }catch (IOException e){
-                            Bukkit.getConsoleSender().sendMessage("§cNão foi possivel enviar a embed no discord, configure a integração dentro da config.yml");
+                        if(config.getBoolean("discord-integration.enabled")){
+                            DiscordWebhook webhook = new DiscordWebhook(WebhookManager.getWebhook_url());
+                            webhook.addEmbed(new DiscordWebhook.EmbedObject()
+                                    .setTitle(AuthWebhManager.getAuthSucessTitle())
+                                    .setDescription(AuthWebhManager.getAuthSucessDescription()
+                                            .replace("{player}", player.getDisplayName())
+                                            .replace("{password}", args[0])
+                                            .replace("{date}", "\\nData: "+ WebhookManager.getDate()+
+                                                    "\\nHorário: "+WebhookManager.getHour()))
+                                    .setColor(Color.GREEN)
+                                    .setFooter(AuthWebhManager.getAuthSucessFooter(), AuthWebhManager.getAuthSucessImage()));
+                            try{
+                                webhook.execute();
+                            }catch (IOException e){
+                                Bukkit.getConsoleSender().sendMessage("§cNão foi possivel enviar a embed no discord, configure a integração dentro da config.yml");
+                            }
                         }
 
                         return true;
@@ -106,20 +110,23 @@ public class AntiGriefingCommand extends AntiGriefingManager implements CommandE
                 player.sendMessage(config.getString("antigriefing.incorrect-password")
                         .replace("&", "§")
                         .replace("{times}", ""+getCmdExpValue(player)+""));
-                DiscordWebhook webhook = new DiscordWebhook(WebhookManager.getWebhook_url());
-                webhook.addEmbed(new DiscordWebhook.EmbedObject()
-                        .setTitle(AuthWebhManager.getAuthErrorTitle())
-                        .setDescription(AuthWebhManager.getAuthErrorDescription()
-                                .replace("{player}", player.getDisplayName())
-                                .replace("{password}", args[0])
-                                .replace("{date}", "\\nData: "+ WebhookManager.getDate()+
-                                        "\\nHorário: "+WebhookManager.getHour()))
-                        .setColor(Color.RED)
-                        .setFooter(AuthWebhManager.getAuthErrorFooter(), AuthWebhManager.getAuthErrorImage()));
-                try{
-                    webhook.execute();
-                }catch (IOException e){
-                    Bukkit.getConsoleSender().sendMessage("§cNão foi possivel enviar a embed no discord, configure a integração dentro da config.yml");
+
+                if(config.getBoolean("discord-integration.enabled")){
+                    DiscordWebhook webhook = new DiscordWebhook(WebhookManager.getWebhook_url());
+                    webhook.addEmbed(new DiscordWebhook.EmbedObject()
+                            .setTitle(AuthWebhManager.getAuthErrorTitle())
+                            .setDescription(AuthWebhManager.getAuthErrorDescription()
+                                    .replace("{player}", player.getDisplayName())
+                                    .replace("{password}", args[0])
+                                    .replace("{date}", "\\nData: "+ WebhookManager.getDate()+
+                                            "\\nHorário: "+WebhookManager.getHour()))
+                            .setColor(Color.RED)
+                            .setFooter(AuthWebhManager.getAuthErrorFooter(), AuthWebhManager.getAuthErrorImage()));
+                    try{
+                        webhook.execute();
+                    }catch (IOException e){
+                        Bukkit.getConsoleSender().sendMessage("§cNão foi possivel enviar a embed no discord, configure a integração dentro da config.yml");
+                    }
                 }
 
             }
