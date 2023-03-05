@@ -38,8 +38,4 @@ public class AuthWebhManager {
     private static String authErrorImage=config.getString(detailsPath+"error.image");
 
 
-    public static void sucess(Player player, String password){
-
-    }
-
 }
